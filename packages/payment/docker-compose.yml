@@ -1,0 +1,19 @@
+services:
+  payment-service:
+    image: payment-service
+    build:
+      context: .
+    volumes:
+      - ./:/opt/www
+    environment:
+      - APP_ENV=dev
+    networks:
+      - main
+    deploy:
+      mode: replicated
+      replicas: 1
+
+networks:
+  main:
+    external: true
+    name: main_network
